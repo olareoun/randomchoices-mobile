@@ -14,9 +14,10 @@
         };
 
         var _start = function(){
-            APP.randomizer = Randomizer.create(APP.generator(_choicesWidget.howMany()), _choicesWidget.howMany());
+            APP.randomizer = Randomizer.create(_choicesWidget.howMany());
             APP.randomizer.onRandom(_choicesWidget.update);
             APP.timer = setInterval(APP.randomizer.createRandom, APP.speed || APP.SPEED_DEFAULT);
+            _controlsWidget.hide();
         };
 
         var _restart = function(){
@@ -27,10 +28,10 @@
         var _choicesWidget = new APP.widgets.ChoicesWidget($('#choices-container'));
         _choicesWidget.onLimitReached(_stop);
 
-        var _addChoiceWidget = new APP.widgets.AppControls($('#add-choice'))
-        _addChoiceWidget.onAddChoiceEvent(_createChoice);
-        _addChoiceWidget.onStartEvent(_start);
-        _addChoiceWidget.onRestartEvent(_restart);
+        var _controlsWidget = new APP.widgets.AppControls($('#add-choice'))
+        _controlsWidget.onAddChoiceEvent(_createChoice);
+        _controlsWidget.onStartEvent(_start);
+        _controlsWidget.onRestartEvent(_restart);
 
         return {
         }

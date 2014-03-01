@@ -1,6 +1,17 @@
+APP.SPEED_DEFAULT = 250;
+
+APP.generator = function(howMany){
+	return {
+		get: function(){
+			return Math.floor((Math.random() * howMany) + 1) - 1
+		} 
+	}
+};
+
 var Randomizer = {};
 
-Randomizer.create = function(generator, howMany){
+Randomizer.create = function(howMany){
+	var generator = APP.generator(howMany);
 	var times = [];
 	var percents = [];
 	var _random;

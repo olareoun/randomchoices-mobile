@@ -141,6 +141,9 @@
             },
             onRestartEvent: function(listener){
                 _restartListeners.push(listener)
+            },
+            hide: function(){
+                _container.hide();
             }
         };
     };
