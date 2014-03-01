@@ -3,7 +3,7 @@
     ns = ns || {};
     ns.controllers = ns.controllers || {};
 
-    ns.controllers.AppController = function(){
+    ns.controllers.AppCtrl = function(){
 
         var _stop = function(){
             clearInterval(APP.timer);
