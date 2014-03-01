@@ -1,7 +1,7 @@
 var APP = {};
 
 APP.init = function(){
-    APP.gameController = new APP.controllers.AppController();
+    APP.appController = new APP.controllers.AppController();
 };
 
 $(function() {

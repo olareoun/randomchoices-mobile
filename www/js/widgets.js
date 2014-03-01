@@ -8,12 +8,6 @@
         var _container = element;
         var _choices = [];
         var _listeners = [];
-        var _limit = 50;
-        var _count = 0;
-
-        var _limitReached = function(){
-            return _count >= _limit;
-        };
 
         var _notify = function(){
             _listeners.forEach(function(listener){
@@ -22,17 +16,10 @@
         };
 
         var _update = function(percents, times, winnerIndex){
-            _count++;
-
             _choices.forEach(function(choice, index){
                 if (index == winnerIndex) choice.currentWinner();
                 else choice.currentLooser();
             });
-
-            if (_limitReached()){
-                _choices[winnerIndex].winner();
-                _notify();
-            };
         };
 
         var _addChoice = function(choice){
@@ -41,20 +28,21 @@
             _container.append($('<div class="col-sm-4">').append(choiceWidget.toElement()));
         };
 
+        var _choiceSelected = function(winnerIndex){
+            _choices[winnerIndex].winner();
+        };
+
         return {
             clear: function(){
                 _container.html("");
                 _choices.length = 0;
-                _count = 0;
             },
             update: _update,
             howMany: function(){
                 return _choices.length;
             },
-            onLimitReached: function(callback){
-                _listeners.push(callback);
-            },
-            addChoice: _addChoice
+            addChoice: _addChoice,
+            choiceSelected: _choiceSelected
         };
 
     };
