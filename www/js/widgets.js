@@ -23,9 +23,15 @@
         };
 
         var _addChoice = function(choice){
-            choiceWidget = new APP.widgets.ChoiceWidget(choice);
+            var choiceWidget = new APP.widgets.ChoiceWidget(choice);
             _choices.push(choiceWidget);
-            _container.append($('<div class="col-sm-4">').append(choiceWidget.toElement()));
+            var choiceContainer = $('<div class="col-sm-4">');
+            choiceWidget.onClick(function(){
+                var indexItem = _choices.indexOf(choiceWidget);
+                _choices.splice(indexItem, 1);
+                choiceContainer.remove();
+            });
+            _container.append(choiceContainer.append(choiceWidget.toElement()));
         };
 
         var _choiceSelected = function(winnerIndex){
@@ -66,6 +72,11 @@
         _container.html(_title);
 
         return {
+            onClick: function(callback){
+                _container.on('click', function(){
+                    callback();
+                });
+            },
             winner: function(){
                 _container.removeClass('choice-current');
                 _container.addClass('choice-winner');
