@@ -31,6 +31,7 @@ Randomizer.create = function(howMany){
 		notify();
         if (_limitReached()){
         	notifyEnd();
+        	_stop();
         	restart();
         };
 	};
@@ -59,6 +60,14 @@ Randomizer.create = function(howMany){
         return _count >= _limit;
     };
 
+    var _start = function(){
+        APP.timer = setInterval(APP.randomizer.createRandom, APP.speed || APP.SPEED_DEFAULT);
+    };
+
+    var _stop = function(){
+        clearInterval(APP.timer);
+    };
+
     restart();
 
 	return {
@@ -76,6 +85,8 @@ Randomizer.create = function(howMany){
 		},
 		onEnd: function(aListener){
 			endListeners.push(aListener);
-		}
+		},
+		start: _start,
+		stop: _stop
 	};
 };
