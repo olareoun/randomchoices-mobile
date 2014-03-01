@@ -32,6 +32,12 @@
             _choices[winnerIndex].winner();
         };
 
+        var _anyWinnerYet = function(){
+            _choices.forEach(function(choice){
+                choice.currentOption();
+            });
+        }
+
         return {
             clear: function(){
                 _container.html("");
@@ -42,7 +48,8 @@
                 return _choices.length;
             },
             addChoice: _addChoice,
-            choiceSelected: _choiceSelected
+            choiceSelected: _choiceSelected,
+            anyWinnerYet: _anyWinnerYet
         };
 
     };
@@ -65,6 +72,10 @@
             },
             currentLooser: function(){
                 _container.addClass('choice-info');
+                _container.removeClass('choice-current');
+            },
+            currentOption: function(){
+                _container.removeClass('choice-winner');
                 _container.removeClass('choice-current');
             },
             toElement: function(){
@@ -132,6 +143,9 @@
             },
             hide: function(){
                 _container.hide();
+            },
+            show: function(){
+                _container.show();
             }
         };
     };
