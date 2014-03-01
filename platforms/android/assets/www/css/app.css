@@ -1,0 +1,42 @@
+body {
+	background-color: white;
+}
+
+#choices-container{
+	padding: 10px;
+	margin: 10px;
+}
+
+.winner{
+	font-weight: bold;
+}
+
+.choice-widget{
+	text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.choice-info {
+    background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD;
+}
+
+.choice-winner {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+}
+
+.choice-current {
+    background-color: #FCF8E3;
+    border-color: #FBEED5;
+    color: #C09853;
+}
+
+.choice-text{
+	font-size: 16px;
+}
