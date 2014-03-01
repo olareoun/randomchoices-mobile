@@ -11,7 +11,7 @@ APP.generator = function(howMany){
 };
 
 APP.init = function(){
-    APP.gameController = new APP.controllers.GameController();
+    APP.gameController = new APP.controllers.AppController();
 };
 
 $(function() {

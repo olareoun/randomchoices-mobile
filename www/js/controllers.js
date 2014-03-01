@@ -3,7 +3,7 @@
     ns = ns || {};
     ns.controllers = ns.controllers || {};
 
-    ns.controllers.GameController = function(){
+    ns.controllers.AppController = function(){
 
         var _createChoice = function(choice){
             _choicesWidget.addChoice(choice);
