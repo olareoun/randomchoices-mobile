@@ -36,7 +36,10 @@
             _choices.forEach(function(choice){
                 choice.currentOption();
             });
-        }
+        };
+
+        var _runningMode = function(){
+        };
 
         return {
             clear: function(){
@@ -49,14 +52,15 @@
             },
             addChoice: _addChoice,
             choiceSelected: _choiceSelected,
-            anyWinnerYet: _anyWinnerYet
+            anyWinnerYet: _anyWinnerYet,
+            runningMode: _runningMode
         };
 
     };
 
     ns.widgets.ChoiceWidget = function(choice){
 
-        var _container = $('<div class="alert alert-info choice-widget">');
+        var _container = $('<div class="choice-info choice-widget">');
         var _title = $('<span class="choice-text">');
         _title.html(choice);
         _container.html(_title);
@@ -95,6 +99,7 @@
         var _restartListeners = [];
 
         var _addChoiceEvent = function(){
+            if (!_choice.val().length) return;
             for (var i = _addListeners.length - 1; i >= 0; i--) {
                 _addListeners[i](_choice.val());
             };

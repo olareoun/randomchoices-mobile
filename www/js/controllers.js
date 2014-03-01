@@ -13,6 +13,7 @@
             APP.randomizer.onEnd(_controlsWidget.show);
             APP.randomizer.start();
             _controlsWidget.hide();
+            _choicesWidget.runningMode();
         };
 
         var _choicesWidget = new APP.widgets.ChoicesWidget($('#choices-container'));
